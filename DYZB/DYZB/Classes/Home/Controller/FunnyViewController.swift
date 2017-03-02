@@ -8,6 +8,7 @@
 
 import UIKit
 
+//趣玩
 private let kTopMargin : CGFloat = 8
 
 class FunnyViewController: BaseAnchorViewController {

@@ -29,13 +29,15 @@ class RecommendGameView: UIView {
         super.awakeFromNib()
         
         // 让控件不随着父控件的拉伸而拉伸
+       // autoresizingMask = UIViewAutoresizing()
         autoresizingMask = UIViewAutoresizing()
-        
         // 注册Cell
         collectionView.register(UINib(nibName: "CollectionGameCell", bundle: nil), forCellWithReuseIdentifier: kGameCellID)
         
         // 给collectionView添加内边距
         collectionView.contentInset = UIEdgeInsets(top: 0, left: kEdgeInsetMargin, bottom: 0, right: kEdgeInsetMargin)
+        
+       
     }
 }
 

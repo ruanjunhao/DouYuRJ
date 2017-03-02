@@ -43,7 +43,7 @@ class RecommendCycleView: UIView {
         super.awakeFromNib()
         
         // 设置该控件不随着父控件的拉伸而拉伸
-        autoresizingMask = UIViewAutoresizing()
+       autoresizingMask = UIViewAutoresizing()
         
         // 注册Cell
         collectionView.register(UINib(nibName: "CollectionCycleCell", bundle: nil), forCellWithReuseIdentifier: kCycleCellID)
@@ -76,7 +76,8 @@ extension RecommendCycleView : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kCycleCellID, for: indexPath) as! CollectionCycleCell
         
-        cell.cycleModel = cycleModels![(indexPath as NSIndexPath).item % cycleModels!.count]
+        cell.cycleModel = cycleModels?[indexPath.item % (cycleModels?.count)!]
+     //   cell.cycleModel = cycleModels![indexPath.item % cycleModels!.count]
         
         return cell
     }
@@ -86,7 +87,7 @@ extension RecommendCycleView : UICollectionViewDataSource {
 // MARK:- 遵守UICollectionView的代理协议
 extension RecommendCycleView : UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        // 1.获取滚动的偏移量
+        // 1.获取滚动的偏移量  滚动到 一半 下面指示器 就选中过去
         let offsetX = scrollView.contentOffset.x + scrollView.bounds.width * 0.5
         
         // 2.计算pageControl的currentIndex
@@ -108,8 +109,12 @@ extension RecommendCycleView : UICollectionViewDelegate {
 // MARK:- 对定时器的操作方法
 extension RecommendCycleView {
     fileprivate func addCycleTimer() {
-        cycleTimer = Timer(timeInterval: 3.0, target: self, selector: #selector(self.scrollToNext), userInfo: nil, repeats: true)
+//        cycleTimer = Timer(timeInterval: 3.0, target: self, selector: #selector(self.scrollToNext), userInfo: nil, repeats: true)
+//        RunLoop.main.add(cycleTimer!, forMode: RunLoopMode.commonModes)
+        
+        cycleTimer = Timer(timeInterval: 3.0, target: self, selector: #selector(RecommendCycleView.scrollToNext), userInfo: nil, repeats: true)
         RunLoop.main.add(cycleTimer!, forMode: RunLoopMode.commonModes)
+        
     }
     
     fileprivate func removeCycleTimer() {

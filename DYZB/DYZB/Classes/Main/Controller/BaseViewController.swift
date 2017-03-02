@@ -20,7 +20,7 @@ class BaseViewController: UIViewController {
         imageView.animationImages = [UIImage(named : "img_loading_1")!, UIImage(named : "img_loading_2")!]
         imageView.animationDuration = 0.5
         imageView.animationRepeatCount = LONG_MAX
-        imageView.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin]
+        imageView.autoresizingMask = [.flexibleTopMargin,.flexibleBottomMargin];
         return imageView
     }()
     
@@ -48,6 +48,7 @@ extension BaseViewController {
     }
     
     func loadDataFinished() {
+        
         // 1.停止动画
         animImageView.stopAnimating()
         

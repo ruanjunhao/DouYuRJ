@@ -20,7 +20,7 @@ class RoomNormalViewController: UIViewController, UIGestureRecognizerDelegate{
         super.viewWillAppear(animated)
         
         // 隐藏导航栏
-        navigationController?.setNavigationBarHidden(true, animated: true)
+      //  navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

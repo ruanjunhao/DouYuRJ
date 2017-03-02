@@ -79,12 +79,16 @@ extension AmuseMenuView : UICollectionViewDataSource {
         }
         
         // 3.取出数据,并且赋值给cell
-        cell.groups = Array(groups![startIndex...endIndex])
+//        cell.groups = Array(groups![startIndex...endIndex])
+          cell.groups = Array(groups![startIndex...endIndex])
+        
     }
 }
 
 
 extension AmuseMenuView : UICollectionViewDelegate {
+    
+    //滚动完全结束 确定当前选中的index
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.bounds.width)
     }

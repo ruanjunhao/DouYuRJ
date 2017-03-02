@@ -21,9 +21,9 @@ extension Date {
         
         let nowDate = Date()
         
-        let interval = nowDate.timeIntervalSince1970
+        let interval = Int(nowDate.timeIntervalSince1970)
         
-        QL2("getCurrentTime___\(interval)")
+        //QL2("getCurrentTime___\(interval)")
         return "\(interval)"
     }
     
